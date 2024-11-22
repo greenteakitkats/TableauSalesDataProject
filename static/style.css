@@ -1,0 +1,261 @@
+/* General Variables */
+:root {
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --header-color: #007bff;
+    --button-background: #007bff;
+    --button-hover: #0056b3;
+    --feedback-color: #d9534f;
+
+    /* Dark Mode Colors */
+    --dark-background: #2b2b2b;
+    --dark-text: #eaeaea;
+    --dark-header: #1a73e8;
+    --dark-button: #444;
+    --dark-button-hover: #666;
+    --dark-feedback: #ff7675;
+}
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--header-color);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Main Section */
+main {
+    padding: 20px 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Filter Rows */
+.filter-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.action-row {
+    margin-bottom: 20px;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Ensures vertical alignment */
+    gap: 20px; /* Space between the buttons */
+}
+
+.run-query-btn,
+.reset-filters-btn {
+    padding: 10px 20px; /* Adjusted padding for consistent sizing */
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.run-query-btn {
+    background-color: var(--button-background);
+    color: white;
+}
+
+.run-query-btn:hover {
+    background-color: var(--button-hover);
+}
+
+.reset-filters-btn {
+    background-color: #d9534f;
+    color: white;
+}
+
+.reset-filters-btn:hover {
+    background-color: #c9302c;
+}
+
+/* Select Input Styling */
+select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 42px; /* Ensures consistent height */
+}
+
+/* Feedback */
+.feedback {
+    color: var(--feedback-color);
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid var(--feedback-color);
+    border-radius: 5px;
+    background-color: #ffecec;
+    margin: 20px 0;
+}
+
+/* Results Section */
+.results {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Makes table scrollable on smaller screens */
+    max-width: 100%; /* Prevents overflow on large tables */
+}
+
+.results h3 {
+    text-align: center;
+    color: var(--header-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+.table {
+    width: 100%; /* Ensures the table takes full width */
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9rem; /* Slightly smaller font size for better fit */
+    table-layout: fixed; /* Fixes layout to prevent expanding beyond container */
+}
+
+.table th,
+.table td {
+    padding: 10px; /* Reduced padding for a compact layout */
+    border: 1px solid #ddd;
+    text-align: left;
+    word-wrap: break-word; /* Enables word wrapping for long content */
+}
+
+.table th {
+    background-color: var(--header-color);
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Table Styles for Dark Mode */
+body.dark-mode .table {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+}
+
+body.dark-mode .table th {
+    background-color: var(--dark-header);
+    color: var(--dark-text);
+}
+
+body.dark-mode .table tbody tr:nth-child(even) {
+    background-color: #3a3a3a;
+}
+
+body.dark-mode .table tbody tr:nth-child(odd) {
+    background-color: #2e2e2e;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--background-color);
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-button {
+    background-color: var(--button-background);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: var(--button-hover);
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+}
+
+body.dark-mode header {
+    background-color: var(--dark-header);
+}
+
+body.dark-mode footer {
+    background-color: var(--dark-background);
+    border-top-color: var(--dark-text);
+}
+
+body.dark-mode .results {
+    background-color: var(--dark-background);
+    border-color: var(--dark-text);
+}
+
+body.dark-mode .feedback {
+    color: var(--dark-feedback);
+    background-color: #4a4a4a;
+    border-color: var(--dark-feedback);
+}
+
+/* Responsive Font Adjustment */
+@media (max-width: 768px) {
+    .table {
+        font-size: 0.8rem; /* Smaller font size for smaller screens */
+    }
+    .table th,
+    .table td {
+        padding: 8px; /* Reduce padding for compact display on mobile */
+    }
+}

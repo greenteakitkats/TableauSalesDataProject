@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau Sales Data Analysis</title>
+    <!-- Link to the external CSS stylesheet -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Header section for the page title -->
+    <header>
+        <h1>BUS4-110A Group 12 - Tableau Sales Data Analysis</h1>
+    </header>
+
+    <!-- Main content area -->
+    <main>
+        <!-- Form for filters and query selection -->
+        <form method="POST">
+            <!-- Row 1: Filters for Category and Sub-Category -->
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="category">Category:</label>
+                    <!-- Dropdown for selecting a category -->
+                    <select name="category" id="category">
+                        <option value="">All</option>
+                        {% for category in categories %}
+                            <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>
+                                {{ category }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="subcategory">Sub-Category:</label>
+                    <!-- Dropdown for selecting a sub-category -->
+                    <select name="subcategory" id="subcategory">
+                        <option value="">All</option>
+                        {% for subcategory in subcategories %}
+                            <option value="{{ subcategory }}" {% if subcategory == selected_subcategory %}selected{% endif %}>
+                                {{ subcategory }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Row 2: Filters for Region and Segment -->
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="region">Region:</label>
+                    <!-- Dropdown for selecting a region -->
+                    <select name="region" id="region">
+                        <option value="">All</option>
+                        {% for region in regions %}
+                            <option value="{{ region }}" {% if region == selected_region %}selected{% endif %}>
+                                {{ region }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="segment">Segment:</label>
+                    <!-- Dropdown for selecting a segment -->
+                    <select name="segment" id="segment">
+                        <option value="">All</option>
+                        {% for segment in segments %}
+                            <option value="{{ segment }}" {% if segment == selected_segment %}selected{% endif %}>
+                                {{ segment }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Row 3: Query dropdown -->
+            <div class="action-row">
+                <div class="action-group">
+                    <label for="query">Query:</label>
+                    <!-- Dropdown for selecting a query -->
+                    <select name="query" id="query">
+                        <option value="total_sales_profit" {% if query == "total_sales_profit" %}selected{% endif %}>
+                            Total Sales and Profit
+                        </option>
+                        <option value="avg_discount" {% if query == "avg_discount" %}selected{% endif %}>
+                            Average Discount by Product
+                        </option>
+                        <option value="sales_by_year" {% if query == "sales_by_year" %}selected{% endif %}>
+                            Total Sales by Year
+                        </option>
+                        <option value="profit_by_region" {% if query == "profit_by_region" %}selected{% endif %}>
+                            Profit by Region
+                        </option>
+                        <option value="negative_profit" {% if query == "negative_profit" %}selected{% endif %}>
+                            Products with Negative Profit
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Row 4: Action buttons (Run Query and Reset Filters) -->
+            <div class="action-buttons">
+                <!-- Button to submit the form and execute the query -->
+                <button type="submit" class="run-query-btn">Run Query</button>
+                <!-- Button to reset filters -->
+                <button type="button" class="reset-filters-btn" onclick="resetFilters()">Reset Filters</button>
+            </div>
+        </form>
+
+        <!-- Results section to display query results -->
+        <div class="results">
+            {% if result_columns and result_data %}
+                <!-- Results header -->
+                <h3>Query Results:</h3>
+                <!-- Table for displaying results -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            {% for column in result_columns %}
+                                <th>{{ column }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in result_data %}
+                            <tr>
+                                {% for cell in row %}
+                                    <td>{{ cell }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% elif feedback_message %}
+                <!-- Display feedback if no results are found -->
+                <div class="feedback">{{ feedback_message }}</div>
+            {% endif %}
+        </div>
+    </main>
+
+    <!-- Footer section with a dark mode toggle -->
+    <footer>
+        <button id="darkModeToggle" class="toggle-button">☾</button>
+    </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButton = document.getElementById('darkModeToggle');
+            const body = document.body;
+
+            // Check for saved dark mode preference in localStorage
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                body.classList.add('dark-mode');
+            }
+
+            // Toggle dark mode and save preference
+            toggleButton.addEventListener('click', function () {
+                body.classList.toggle('dark-mode');
+                if (body.classList.contains('dark-mode')) {
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
+        });
+
+        // Reset all filter dropdowns to their default values
+        function resetFilters() {
+            document.getElementById("category").value = "";
+            document.getElementById("subcategory").value = "";
+            document.getElementById("region").value = "";
+            document.getElementById("segment").value = "";
+            document.getElementById("query").value = "";
+        }
+    </script>
+</body>
+</html>
