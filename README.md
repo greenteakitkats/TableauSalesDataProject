@@ -8,11 +8,9 @@
 
 ## Project Description
 
-This project is a Flask-based web application for analyzing and visualizing sales data. It was built as part of the BUS4-110A course to apply fundamental management information systems concepts and demonstrate practical skills in web development and data visualization.
+This project is a Flask-based web application for analyzing and visualizing sales data. Built as part of the BUS4-110A course, it demonstrates practical skills in web development and data visualization. 
 
-### Motivation and Purpose
-- To create a user-friendly platform for exploring sales trends, discounts, and profits in a structured and interactive way.
-- To practice dynamic filtering, predefined queries, and responsive UI/UX design in a real-world scenario.
+The goal of the project is to create a user-friendly platform for exploring sales trends, discounts, and profits in a structured and interactive way. Users can apply dynamic filters, run predefined queries, and visualize data insights effectively. This project applies fundamental management information systems concepts in a real-world scenario, emphasizing responsive UI/UX design and dynamic data interaction.
 
 ### Features
 1. Dynamic Filters:
@@ -90,7 +88,7 @@ http://127.0.0.1:5000/
 
 ## How to Use the Project
 
-## Queries and Filters
+## Filters and Queries
 ### Filters
 Users can apply the following filters to refine their data:
 - **Category**
@@ -142,3 +140,9 @@ This project includes several enhancements and improvements beyond the minimum r
 - **Christine Santos**
 - **Oliva Rivera Garcia**
 - **Ryan Do**
+
+---
+
+## License
+
+This project is for educational purposes only and is not intended for commercial use or redistribution.
