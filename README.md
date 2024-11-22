@@ -36,6 +36,7 @@ The goal of the project is to create a user-friendly platform for exploring sale
 1. [How to Install and Run the Project](#how-to-install-and-run-the-project)
 2. [How to Use the Project](#how-to-use-the-project)
 3. [Credits](#credits)
+4. [License](#license)
 
 ---
 
